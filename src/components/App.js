@@ -19,7 +19,7 @@ class App extends Component {
   }
 }
 
-function mapStateToProps ({ authedUser }) {
+function mapStateToProps ({ authedUser }) {   //To connect a comp to Redux store state. 
   return {
     loading: authedUser === null
   }
