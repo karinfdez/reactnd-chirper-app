@@ -1,30 +1,30 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import { handleInitialData } from '../actions/shared';
-import Dashboard from './Dashboard';
-import LoadingBar from 'react-redux-loading';
+import { connect } from 'react-redux'
+import { handleInitialData } from '../actions/shared'
+import Dashboard from './Dashboard'
+import LoadingBar from 'react-redux-loading'
+import NewTweet from './NewTweet'
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
+    this.props.dispatch(handleInitialData())
   }
   render() {
     return (
       <div>
         <LoadingBar />
-        {!!this.props.loading 
-        ? null 
-        : <Dashboard />}
-        
+        {this.props.loading === true
+          ? null
+          : <NewTweet />}
       </div>
     )
   }
 }
 
-function mapStateToProps ({ authedUser }) {   //To connect a comp to Redux store state. 
+function mapStateToProps ({ authedUser }) {
   return {
     loading: authedUser === null
   }
 }
 
-export default connect(mapStateToProps)(App) //In order to get access to dispatch
+export default connect(mapStateToProps)(App)
